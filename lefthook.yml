@@ -1,0 +1,14 @@
+pre-commit:
+  commands:
+    lint:
+      run: npm run lint
+      glob: '*.{js,ts,tsx}'
+    typecheck:
+      run: npm run typecheck
+      glob: '*.{ts,tsx}'
+
+commit-msg:
+  commands:
+    commitlint:
+      run: npm run commitlint
+      glob: '**'

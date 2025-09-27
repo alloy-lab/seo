@@ -1,0 +1,82 @@
+{
+  "name": "@alloylab/seo",
+  "version": "1.0.0",
+  "description": "SEO utilities and components for modern web applications",
+  "main": "dist/index.js",
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest --watch",
+    "lint": "eslint src --ext .js,.ts,.tsx",
+    "lint:fix": "eslint src --ext .js,.ts,.tsx --fix",
+    "commitlint": "commitlint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "prepublishOnly": "npm run test:run && npm run lint && npm run typecheck",
+    "prepare": "npm run build",
+    "publish": "npm publish --access public",
+    "hooks:install": "lefthook install",
+    "hooks:uninstall": "lefthook uninstall",
+    "version": "npm run format && git add -A",
+    "postversion": "git push && git push --tags"
+  },
+  "keywords": [
+    "seo",
+    "meta-tags",
+    "structured-data",
+    "sitemap",
+    "react",
+    "typescript",
+    "json-ld",
+    "open-graph",
+    "twitter-cards"
+  ],
+  "author": "Stephen Way <stephen@stephenway.net>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alloy-lab/overland.git",
+    "directory": "packages/seo"
+  },
+  "bugs": {
+    "url": "https://github.com/alloy-lab/overland/issues"
+  },
+  "homepage": "https://github.com/alloy-lab/overland/tree/main/packages/seo#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@eslint/js": "^9.16.0",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^15.0.0",
+    "@types/node": "^24.5.2",
+    "@types/react": "^18.3.12",
+    "@vitest/coverage-v8": "^3.2.4",
+    "eslint": "^9.16.0",
+    "jsdom": "^25.0.1",
+    "lefthook": "^1.13.2",
+    "prettier": "^3.6.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.16.0",
+    "vitest": "^3.2.4"
+  }
+}
