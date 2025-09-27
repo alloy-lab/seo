@@ -10,9 +10,13 @@ SEO utilities and components for modern web applications. This package provides 
 - 🏷️ **Meta Tag Generation**: Automatic Open Graph, Twitter Cards, and standard meta tags
 - 📊 **Structured Data**: JSON-LD schema generation for Schema.org
 - 🗺️ **Sitemap Generation**: XML sitemap and robots.txt utilities
-- ⚛️ **React Components**: Ready-to-use SEO components for React applications
+- ⚛️ **React Hooks**: `useSEO()` hook for React applications
+- 🔥 **Next.js App Router**: `generateMetadata()` helper for App Router
+- 🎯 **SvelteKit Support**: Native SvelteKit integration
+- 📱 **React Components**: Ready-to-use SEO components for React applications
 - 🔧 **TypeScript Support**: Full TypeScript definitions and type safety
 - 📦 **Framework Agnostic**: Works with any frontend framework
+- ⚡ **Performance**: Optimized for speed and bundle size (< 1KB core)
 - 🎯 **SEO Optimized**: Follows best practices for search engine optimization
 
 ## Installation
@@ -26,6 +30,64 @@ pnpm add @alloylab/seo
 ```
 
 ## Quick Start
+
+### Framework-Specific Usage
+
+#### React with Hooks
+
+```typescript
+import { useSEO } from '@alloylab/seo';
+
+function MyPage({ page }) {
+  const { title, description, metaTags } = useSEO({
+    siteSettings: { siteName: 'My Site' },
+    page,
+    baseUrl: 'https://mysite.com',
+    type: 'page'
+  });
+
+  return (
+    <div>
+      <head>{metaTags}</head>
+      <h1>{title}</h1>
+    </div>
+  );
+}
+```
+
+#### Next.js App Router
+
+```typescript
+import { generateMetadata } from '@alloylab/seo/nextjs';
+
+export async function generateMetadata({ params }) {
+  const page = await getPage(params.slug);
+
+  return generateMetadata({
+    siteSettings: { siteName: 'My Site' },
+    page,
+    baseUrl: 'https://mysite.com',
+    type: 'page',
+  });
+}
+```
+
+#### SvelteKit
+
+```typescript
+// +page.ts
+import { generateSEOData } from '@alloylab/seo/sveltekit';
+
+export const load = async () => {
+  const seo = generateSEOData({
+    siteSettings: { siteName: 'My Site' },
+    baseUrl: 'https://mysite.com',
+    type: 'home',
+  });
+
+  return { seo };
+};
+```
 
 ### 1. Basic SEO Generation
 

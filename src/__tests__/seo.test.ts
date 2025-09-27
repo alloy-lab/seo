@@ -71,9 +71,11 @@ describe('SEO Utilities', () => {
     });
 
     it('should fallback to page title when no SEO title', () => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { title: _title, ...seoWithoutTitle } = mockPage.seo!;
       const pageWithoutSEOTitle = {
         ...mockPage,
-        seo: { ...mockPage.seo, title: undefined },
+        seo: seoWithoutTitle,
       };
       const seo = generateSEO(
         pageWithoutSEOTitle,

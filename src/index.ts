@@ -13,6 +13,24 @@ export {
   useStructuredData,
 } from './components/StructuredData.js';
 
+// React Hooks
+export { useSEO, useSEOManager } from './hooks/useSEO.js';
+export type { UseSEOOptions, UseSEOReturn } from './hooks/useSEO.js';
+
+// Framework Integrations
+export {
+  generateMetadata,
+  generateStructuredDataScript,
+  withSEO,
+} from './frameworks/nextjs.js';
+export {
+  createPageSEOLoader,
+  createSEOLoader,
+  createSEOStore,
+  generateSEOData,
+  generateMetaTags as generateSvelteKitMetaTags,
+} from './frameworks/sveltekit.js';
+
 // Utilities
 export { generateMetaTags, generateSEO } from './utils/seo.js';
 export {
