@@ -89,11 +89,31 @@
         background: #f6f8fa;
         border: 1px solid #d0d7de;
         border-radius: 6px;
-        padding: 12px;
+        padding: 16px;
         margin-bottom: 20px;
         font-family:
           'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
         font-size: 14px;
+        line-height: 1.5;
+        white-space: pre-wrap;
+        overflow-x: auto;
+      }
+      .example-data code {
+        background: transparent;
+        padding: 0;
+        border: none;
+        font-family: inherit;
+      }
+      .keyword {
+        color: #d73a49;
+        font-weight: bold;
+      }
+      .string {
+        color: #032f62;
+      }
+      .comment {
+        color: #6a737d;
+        font-style: italic;
       }
     </style>
   </head>
@@ -128,11 +148,34 @@
           id="input-data"
           placeholder="Enter your SEO data here..."
         ></textarea>
-        <button onclick="generateSEO()">Generate SEO</button>
+        <div
+          style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap"
+        >
+          <button onclick="generateSEO()">Generate SEO</button>
+          <button onclick="loadExample()">Load Example</button>
+          <button onclick="loadBlogExample()">Blog Example</button>
+          <button onclick="loadProductExample()">Product Example</button>
+          <button onclick="clearData()">Clear</button>
+        </div>
       </div>
 
       <div class="output-section">
-        <h3>Generated Output</h3>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+          "
+        >
+          <h3 style="margin: 0">Generated Output</h3>
+          <button
+            onclick="copyOutput()"
+            style="font-size: 12px; padding: 4px 8px"
+          >
+            Copy
+          </button>
+        </div>
         <div class="output" id="output"></div>
       </div>
     </div>
@@ -144,7 +187,8 @@
         const { title, description, metaTags } = useSEO({ siteSettings: {
         siteName: 'My Site' }, page, baseUrl: 'https://mysite.com', type: 'page'
         }); return ( &lt;div&gt; &lt;head&gt;{metaTags}&lt;/head&gt;
-        &lt;h1&gt;{title}&lt;/h1&gt; &lt;/div&gt; ); }
+        &lt;h1&gt;{title}&lt;/h1&gt; &lt;p&gt;{description}&lt;/p&gt;
+        &lt;/div&gt; ); }
       </div>
     </div>
 
@@ -198,9 +242,101 @@
       });
 
       // Initialize with example data
-      document.getElementById('input-data').value = document
-        .getElementById('example-data')
-        .textContent.trim();
+      loadExample();
+
+      function loadExample() {
+        document.getElementById('input-data').value = document
+          .getElementById('example-data')
+          .textContent.trim();
+        generateSEO();
+      }
+
+      function loadBlogExample() {
+        const blogExample = {
+          siteSettings: {
+            siteName: 'Tech Blog',
+            siteDescription: 'Latest technology news and tutorials',
+          },
+          page: {
+            id: '2',
+            title: 'Getting Started with React Hooks',
+            slug: 'react-hooks-tutorial',
+            status: 'published',
+            excerpt:
+              'Learn how to use React Hooks to build modern React applications with this comprehensive tutorial.',
+            seo: {
+              title:
+                'React Hooks Tutorial: Complete Guide for Beginners | Tech Blog',
+              description:
+                'Master React Hooks with our step-by-step tutorial. Learn useState, useEffect, and custom hooks with practical examples.',
+              keywords:
+                'react hooks, react tutorial, javascript, frontend development, react useState, react useEffect',
+            },
+            createdAt: '2024-01-15T10:00:00.000Z',
+            updatedAt: '2024-01-15T10:00:00.000Z',
+          },
+          baseUrl: 'https://techblog.com',
+          type: 'page',
+        };
+        document.getElementById('input-data').value = JSON.stringify(
+          blogExample,
+          null,
+          2
+        );
+        generateSEO();
+      }
+
+      function loadProductExample() {
+        const productExample = {
+          siteSettings: {
+            siteName: 'E-Commerce Store',
+            siteDescription: 'Quality products at great prices',
+          },
+          page: {
+            id: '3',
+            title: 'Wireless Bluetooth Headphones',
+            slug: 'wireless-bluetooth-headphones',
+            status: 'published',
+            excerpt:
+              'Premium wireless Bluetooth headphones with noise cancellation and 30-hour battery life.',
+            seo: {
+              title:
+                'Wireless Bluetooth Headphones - Premium Audio | E-Commerce Store',
+              description:
+                'Shop premium wireless Bluetooth headphones with active noise cancellation, 30-hour battery life, and crystal-clear sound quality.',
+              keywords:
+                'wireless headphones, bluetooth headphones, noise cancellation, premium audio, headphones',
+            },
+            createdAt: '2024-01-20T14:30:00.000Z',
+            updatedAt: '2024-01-20T14:30:00.000Z',
+          },
+          baseUrl: 'https://ecommercestore.com',
+          type: 'page',
+        };
+        document.getElementById('input-data').value = JSON.stringify(
+          productExample,
+          null,
+          2
+        );
+        generateSEO();
+      }
+
+      function clearData() {
+        document.getElementById('input-data').value = '';
+        document.getElementById('output').textContent = '';
+      }
+
+      function copyOutput() {
+        const output = document.getElementById('output').textContent;
+        navigator.clipboard.writeText(output).then(() => {
+          const button = event.target;
+          const originalText = button.textContent;
+          button.textContent = 'Copied!';
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        });
+      }
 
       function generateSEO() {
         try {
@@ -240,20 +376,96 @@
             url: seo.url,
           };
 
-          const output = `SEO Data:
+          const output = `🎯 SEO Data:
 ${JSON.stringify(seo, null, 2)}
 
-Meta Tags:
+📄 Meta Tags:
 ${metaTags}
 
-Structured Data:
-${JSON.stringify(structuredData, null, 2)}`;
+🏗️ Structured Data:
+${JSON.stringify(structuredData, null, 2)}
+
+✅ SEO Score: ${calculateSEOScore(seo)}/100
+${getSEOSuggestions(seo)}`;
 
           document.getElementById('output').textContent = output;
         } catch (error) {
           document.getElementById('output').textContent =
             `Error: ${error.message}`;
         }
+      }
+
+      function calculateSEOScore(seo) {
+        let score = 0;
+        let issues = [];
+        let suggestions = [];
+
+        // Check title
+        if (seo.title) {
+          if (seo.title.length >= 30 && seo.title.length <= 60) {
+            score += 25;
+          } else {
+            issues.push('Title length should be 30-60 characters');
+          }
+        } else {
+          issues.push('Missing SEO title');
+        }
+
+        // Check description
+        if (seo.description) {
+          if (seo.description.length >= 120 && seo.description.length <= 160) {
+            score += 25;
+          } else {
+            issues.push('Description length should be 120-160 characters');
+          }
+        } else {
+          issues.push('Missing meta description');
+        }
+
+        // Check keywords
+        if (seo.keywords) {
+          score += 15;
+        } else {
+          suggestions.push('Consider adding relevant keywords');
+        }
+
+        // Check URL
+        if (seo.url) {
+          score += 15;
+        }
+
+        // Check type
+        if (seo.type) {
+          score += 20;
+        }
+
+        return score;
+      }
+
+      function getSEOSuggestions(seo) {
+        const suggestions = [];
+
+        if (!seo.keywords) {
+          suggestions.push(
+            '💡 Add relevant keywords for better search visibility'
+          );
+        }
+
+        if (seo.title && seo.title.length < 30) {
+          suggestions.push(
+            '💡 Consider making your title more descriptive (30-60 chars)'
+          );
+        }
+
+        if (seo.description && seo.description.length < 120) {
+          suggestions.push('💡 Expand your description to 120-160 characters');
+        }
+
+        if (suggestions.length === 0) {
+          return '🎉 Great job! Your SEO data looks good.';
+        }
+
+        return '💡 Suggestions:\n' + suggestions.join('\n');
       }
 
       // Generate SEO on page load
