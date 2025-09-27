@@ -14,6 +14,7 @@ concurrency:
 jobs:
   test:
     runs-on: self-hosted
+    if: github.repository == 'alloy-lab/seo'
 
     strategy:
       matrix:
@@ -82,7 +83,7 @@ jobs:
   publish:
     needs: test
     runs-on: self-hosted
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' && github.repository == 'alloy-lab/seo'
     environment: npm-publish
 
     steps:
