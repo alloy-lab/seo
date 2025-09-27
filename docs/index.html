@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@alloylab/seo - SEO Package Documentation</title>
+    <meta
+      name="description"
+      content="A comprehensive SEO package for React, Next.js, SvelteKit, and vanilla JavaScript with Payload CMS integration."
+    />
+    <meta
+      property="og:title"
+      content="@alloylab/seo - SEO Package Documentation"
+    />
+    <meta
+      property="og:description"
+      content="A comprehensive SEO package for React, Next.js, SvelteKit, and vanilla JavaScript with Payload CMS integration."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://alloylab.github.io/overland/packages/seo/"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.6;
+        color: #24292f;
+        background: #ffffff;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 60px 0;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      header p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        margin-top: 20px;
+      }
+
+      nav {
+        background: #f6f8fa;
+        border-bottom: 1px solid #d0d7de;
+        padding: 20px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        color: #0969da;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 6px;
+        transition: background-color 0.2s;
+      }
+
+      nav a:hover {
+        background: #dbeafe;
+      }
+
+      main {
+        padding: 60px 0;
+      }
+
+      .section {
+        margin-bottom: 60px;
+      }
+
+      .section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #1f2937;
+      }
+
+      .section h3 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        color: #374151;
+        margin-top: 30px;
+      }
+
+      .section p {
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+        color: #4b5563;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin: 40px 0;
+      }
+
+      .feature-card {
+        background: #f9fafb;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 30px;
+        text-align: center;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+
+      .feature-card h4 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        color: #1f2937;
+      }
+
+      .code-block {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 20px;
+        border-radius: 8px;
+        font-family:
+          'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        font-size: 14px;
+        overflow-x: auto;
+        margin: 20px 0;
+      }
+
+      .code-block .comment {
+        color: #64748b;
+      }
+
+      .code-block .keyword {
+        color: #c084fc;
+      }
+
+      .code-block .string {
+        color: #34d399;
+      }
+
+      .cta-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 60px 0;
+        text-align: center;
+        border-radius: 12px;
+        margin: 60px 0;
+      }
+
+      .cta-section h2 {
+        color: white;
+        margin-bottom: 20px;
+      }
+
+      .cta-section p {
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 30px;
+      }
+
+      .btn {
+        display: inline-block;
+        background: white;
+        color: #667eea;
+        padding: 15px 30px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        margin: 0 10px;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+      }
+
+      .btn-secondary:hover {
+        background: white;
+        color: #667eea;
+      }
+
+      footer {
+        background: #1f2937;
+        color: #9ca3af;
+        padding: 40px 0;
+        text-align: center;
+        margin-top: 60px;
+      }
+
+      .playground-preview {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 30px;
+        margin: 30px 0;
+        text-align: center;
+      }
+
+      .playground-preview img {
+        max-width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>@alloylab/seo</h1>
+        <p>
+          A comprehensive SEO package for React, Next.js, SvelteKit, and vanilla
+          JavaScript with Payload CMS integration.
+        </p>
+        <div class="badge">v1.0.0</div>
+      </div>
+    </header>
+
+    <nav>
+      <div class="container">
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#installation">Installation</a></li>
+          <li><a href="#usage">Usage</a></li>
+          <li><a href="#playground">Playground</a></li>
+          <li><a href="#api">API</a></li>
+          <li><a href="#payload">Payload CMS</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container">
+        <section id="features" class="section">
+          <h2>🚀 Features</h2>
+          <p>
+            @alloylab/seo provides everything you need for comprehensive SEO
+            management across different frameworks.
+          </p>
+
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">⚛️</div>
+              <h4>React Integration</h4>
+              <p>
+                Custom hooks like <code>useSEO()</code> for seamless React
+                integration with automatic meta tag management.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">▲</div>
+              <h4>Next.js App Router</h4>
+              <p>
+                Built-in support for Next.js App Router with
+                <code>generateMetadata()</code> and HOC patterns.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">🟠</div>
+              <h4>SvelteKit Support</h4>
+              <p>
+                Native SvelteKit integration with load functions, stores, and
+                SSR support.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">📊</div>
+              <h4>Structured Data</h4>
+              <p>
+                Generate JSON-LD structured data for Articles, Products, FAQs,
+                Local Business, and more.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">🗺️</div>
+              <h4>Sitemap & Robots</h4>
+              <p>
+                Automatic sitemap generation and robots.txt creation with CLI
+                tools.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">🔌</div>
+              <h4>Payload CMS Plugin</h4>
+              <p>
+                Native Payload CMS integration with automatic SEO fields, hooks,
+                and admin UI.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="installation" class="section">
+          <h2>📦 Installation</h2>
+          <p>Install the package using your preferred package manager:</p>
+
+          <div class="code-block">
+            <span class="comment"># npm</span>
+            npm install @alloylab/seo
+
+            <span class="comment"># yarn</span>
+            yarn add @alloylab/seo
+
+            <span class="comment"># pnpm</span>
+            pnpm add @alloylab/seo
+          </div>
+        </section>
+
+        <section id="usage" class="section">
+          <h2>🎯 Usage</h2>
+
+          <h3>React Hook</h3>
+          <div class="code-block">
+            <span class="keyword">import</span> { useSEO }
+            <span class="keyword">from</span>
+            <span class="string">'@alloylab/seo'</span>;
+
+            <span class="keyword">function</span> MyPage({ page }) {
+            <span class="keyword">const</span> { title, description, metaTags }
+            = useSEO({ siteSettings: { siteName:
+            <span class="string">'My Site'</span> }, page, baseUrl:
+            <span class="string">'https://mysite.com'</span>, type:
+            <span class="string">'page'</span>
+            });
+
+            <span class="keyword">return</span> ( &lt;div&gt;
+            &lt;head&gt;{metaTags}&lt;/head&gt; &lt;h1&gt;{title}&lt;/h1&gt;
+            &lt;p&gt;{description}&lt;/p&gt; &lt;/div&gt; ); }
+          </div>
+
+          <h3>Next.js App Router</h3>
+          <div class="code-block">
+            <span class="keyword">import</span> { generateMetadata }
+            <span class="keyword">from</span>
+            <span class="string">'@alloylab/seo/nextjs'</span>;
+
+            <span class="keyword">export async function</span>
+            generateMetadata({ params }) {
+            <span class="keyword">const</span> page =
+            <span class="keyword">await</span> getPage(params.slug);
+
+            <span class="keyword">return</span> generateMetadata({ siteSettings:
+            { siteName: <span class="string">'My Site'</span> }, page, baseUrl:
+            <span class="string">'https://mysite.com'</span>, type:
+            <span class="string">'page'</span>
+            }); }
+          </div>
+
+          <h3>SvelteKit</h3>
+          <div class="code-block">
+            <span class="comment">// +page.ts</span>
+            <span class="keyword">import</span> { generateSEOData }
+            <span class="keyword">from</span>
+            <span class="string">'@alloylab/seo/sveltekit'</span>;
+
+            <span class="keyword">export const</span> load =
+            <span class="keyword">async</span> () =&gt; {
+            <span class="keyword">const</span> seo = generateSEOData({
+            siteSettings: { siteName: <span class="string">'My Site'</span> },
+            baseUrl: <span class="string">'https://mysite.com'</span>, type:
+            <span class="string">'home'</span>
+            });
+
+            <span class="keyword">return</span> { seo }; };
+          </div>
+        </section>
+
+        <section id="playground" class="section">
+          <h2>🎮 Interactive Playground</h2>
+          <p>
+            Try out the SEO package with our interactive playground. Test
+            different configurations and see the generated output in real-time.
+          </p>
+
+          <div class="playground-preview">
+            <h3>Live Demo</h3>
+            <p>
+              Experience the full power of @alloylab/seo with our interactive
+              playground.
+            </p>
+            <a href="playground.html" class="btn">🚀 Open Playground</a>
+          </div>
+        </section>
+
+        <section id="api" class="section">
+          <h2>📚 API Reference</h2>
+
+          <h3>Core Functions</h3>
+          <ul>
+            <li>
+              <code>generateSEO(page, siteSettings, type, baseUrl)</code> -
+              Generate SEO data
+            </li>
+            <li>
+              <code>generateMetaTags(seo)</code> - Generate HTML meta tags
+            </li>
+            <li>
+              <code>generateStructuredData(type, data)</code> - Generate JSON-LD
+              structured data
+            </li>
+          </ul>
+
+          <h3>React Hooks</h3>
+          <ul>
+            <li>
+              <code>useSEO(options)</code> - React hook for SEO management
+            </li>
+            <li>
+              <code>useSEOManager(options)</code> - Advanced SEO state
+              management
+            </li>
+          </ul>
+
+          <h3>Framework Integrations</h3>
+          <ul>
+            <li>
+              <code>generateMetadata()</code> - Next.js App Router metadata
+            </li>
+            <li>
+              <code>generateSEOData()</code> - SvelteKit SEO data generation
+            </li>
+            <li><code>createSEOStore()</code> - SvelteKit reactive store</li>
+          </ul>
+        </section>
+
+        <section id="payload" class="section">
+          <h2>🔌 Payload CMS Integration</h2>
+          <p>
+            @alloylab/seo includes a complete Payload CMS plugin for seamless
+            integration.
+          </p>
+
+          <div class="code-block">
+            <span class="keyword">import</span> { seoPlugin }
+            <span class="keyword">from</span>
+            <span class="string">'@alloylab/seo/payload'</span>;
+
+            <span class="keyword">export default</span> buildConfig({ plugins: [
+            seoPlugin({ collections: [<span class="string">'pages'</span>,
+            <span class="string">'posts'</span>], globals: [<span class="string"
+              >'site'</span
+            >] }) ] });
+          </div>
+        </section>
+
+        <div class="cta-section">
+          <h2>Ready to Get Started?</h2>
+          <p>Start building better SEO into your applications today.</p>
+          <a href="playground.html" class="btn">Try the Playground</a>
+          <a
+            href="https://github.com/alloylab/overland/tree/main/packages/seo"
+            class="btn btn-secondary"
+            >View on GitHub</a
+          >
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2024 AlloyLab. Built with ❤️ for the developer community.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('nav a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
