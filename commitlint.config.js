@@ -26,6 +26,7 @@ export default {
         'react', // React components and hooks
         'nextjs', // Next.js integration
         'sveltekit', // SvelteKit integration
+        'payload', // Payload CMS integration
         'types', // Type definitions
         'utils', // Utility functions
         'docs', // Documentation
