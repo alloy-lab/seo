@@ -304,78 +304,73 @@
       <div class="tab-content active" id="react-content">
         <h3>React Usage</h3>
         <div class="code-example">
-          <span class="keyword">import</span> { useSEO }
-          <span class="keyword">from</span>
-          <span class="string">'@alloylab/seo'</span>;
+<span class="keyword">import</span> { useSEO } <span class="keyword">from</span> <span class="string">'@alloylab/seo'</span>;
 
-          <span class="keyword">function</span> MyPage({ page }) {
-          <span class="keyword">const</span> { title, description, metaTags } =
-          useSEO({ siteSettings: { siteName:
-          <span class="string">'My Site'</span> }, page, baseUrl:
-          <span class="string">'https://mysite.com'</span>, type:
-          <span class="string">'page'</span>
-          });
+<span class="keyword">function</span> MyPage({ page }) {
+  <span class="keyword">const</span> { title, description, metaTags } = useSEO({
+    siteSettings: { siteName: <span class="string">'My Site'</span> },
+    page,
+    baseUrl: <span class="string">'https://mysite.com'</span>,
+    type: <span class="string">'page'</span>
+  });
 
-          <span class="keyword">return</span> ( &lt;div&gt;
-          &lt;head&gt;{metaTags}&lt;/head&gt; &lt;h1&gt;{title}&lt;/h1&gt;
-          &lt;p&gt;{description}&lt;/p&gt; &lt;/div&gt; ); }
+  <span class="keyword">return</span> (
+    &lt;div&gt;
+      &lt;head&gt;{metaTags}&lt;/head&gt;
+      &lt;h1&gt;{title}&lt;/h1&gt;
+      &lt;p&gt;{description}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
         </div>
       </div>
 
       <div class="tab-content" id="nextjs-content">
         <h3>Next.js App Router Usage</h3>
         <div class="code-example">
-          <span class="keyword">import</span> { generateMetadata }
-          <span class="keyword">from</span>
-          <span class="string">'@alloylab/seo/nextjs'</span>;
+<span class="keyword">import</span> { generateMetadata } <span class="keyword">from</span> <span class="string">'@alloylab/seo/nextjs'</span>;
 
-          <span class="keyword">export async function</span> generateMetadata({
-          params }) { <span class="keyword">const</span> page =
-          <span class="keyword">await</span> getPage(params.slug);
+<span class="keyword">export async function</span> generateMetadata({ params }) {
+  <span class="keyword">const</span> page = <span class="keyword">await</span> getPage(params.slug);
 
-          <span class="keyword">return</span> generateMetadata({ siteSettings: {
-          siteName: <span class="string">'My Site'</span> }, page, baseUrl:
-          <span class="string">'https://mysite.com'</span>, type:
-          <span class="string">'page'</span>
-          }); }
+  <span class="keyword">return</span> generateMetadata({
+    siteSettings: { siteName: <span class="string">'My Site'</span> },
+    page,
+    baseUrl: <span class="string">'https://mysite.com'</span>,
+    type: <span class="string">'page'</span>
+  });
+}
         </div>
       </div>
 
       <div class="tab-content" id="sveltekit-content">
         <h3>SvelteKit Usage</h3>
         <div class="code-example">
-          <span class="comment">// +page.ts</span>
-          <span class="keyword">import</span> { generateSEOData }
-          <span class="keyword">from</span>
-          <span class="string">'@alloylab/seo/sveltekit'</span>;
+<span class="comment">// +page.ts</span>
+<span class="keyword">import</span> { generateSEOData } <span class="keyword">from</span> <span class="string">'@alloylab/seo/sveltekit'</span>;
 
-          <span class="keyword">export const</span> load =
-          <span class="keyword">async</span> () =&gt; {
-          <span class="keyword">const</span> seo = generateSEOData({
-          siteSettings: { siteName: <span class="string">'My Site'</span> },
-          baseUrl: <span class="string">'https://mysite.com'</span>, type:
-          <span class="string">'home'</span>
-          });
+<span class="keyword">export const</span> load = <span class="keyword">async</span> () =&gt; {
+  <span class="keyword">const</span> seo = generateSEOData({
+    siteSettings: { siteName: <span class="string">'My Site'</span> },
+    baseUrl: <span class="string">'https://mysite.com'</span>,
+    type: <span class="string">'home'</span>
+  });
 
-          <span class="keyword">return</span> { seo }; };
+  <span class="keyword">return</span> { seo };
+};
         </div>
       </div>
 
       <div class="tab-content" id="vanilla-content">
         <h3>Vanilla JavaScript Usage</h3>
         <div class="code-example">
-          <span class="keyword">import</span> { generateSEO, generateMetaTags }
-          <span class="keyword">from</span>
-          <span class="string">'@alloylab/seo'</span>;
+<span class="keyword">import</span> { generateSEO, generateMetaTags } <span class="keyword">from</span> <span class="string">'@alloylab/seo'</span>;
 
-          <span class="keyword">const</span> seo = generateSEO(data,
-          siteSettings, <span class="string">'page'</span>, baseUrl);
-          <span class="keyword">const</span> metaTags = generateMetaTags(seo);
+<span class="keyword">const</span> seo = generateSEO(data, siteSettings, <span class="string">'page'</span>, baseUrl);
+<span class="keyword">const</span> metaTags = generateMetaTags(seo);
 
-          <span class="comment">// Insert into document head</span>
-          document.head.insertAdjacentHTML(<span class="string"
-            >'beforeend'</span
-          >, metaTags);
+<span class="comment">// Insert into document head</span>
+document.head.insertAdjacentHTML(<span class="string">'beforeend'</span>, metaTags);
         </div>
       </div>
     </div>
