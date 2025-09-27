@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@alloylab/seo Playground</title>
+    <style>
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .input-section,
+      .output-section {
+        border: 1px solid #e1e5e9;
+        border-radius: 8px;
+        padding: 20px;
+      }
+      .input-section h3,
+      .output-section h3 {
+        margin-top: 0;
+        color: #24292f;
+      }
+      textarea {
+        width: 100%;
+        height: 200px;
+        border: 1px solid #d0d7de;
+        border-radius: 6px;
+        padding: 12px;
+        font-family:
+          'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        font-size: 14px;
+        resize: vertical;
+      }
+      button {
+        background: #0969da;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      button:hover {
+        background: #0860ca;
+      }
+      .output {
+        background: #f6f8fa;
+        border: 1px solid #d0d7de;
+        border-radius: 6px;
+        padding: 12px;
+        font-family:
+          'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        font-size: 14px;
+        white-space: pre-wrap;
+        min-height: 200px;
+      }
+      .framework-tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .tab {
+        padding: 8px 16px;
+        border: 1px solid #d0d7de;
+        border-radius: 6px;
+        cursor: pointer;
+        background: white;
+      }
+      .tab.active {
+        background: #0969da;
+        color: white;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      .example-data {
+        background: #f6f8fa;
+        border: 1px solid #d0d7de;
+        border-radius: 6px;
+        padding: 12px;
+        margin-bottom: 20px;
+        font-family:
+          'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>@alloylab/seo Playground</h1>
+    <p>
+      Test and explore the SEO package functionality with different frameworks.
+    </p>
+
+    <div class="framework-tabs">
+      <div class="tab active" data-framework="react">React</div>
+      <div class="tab" data-framework="nextjs">Next.js</div>
+      <div class="tab" data-framework="sveltekit">SvelteKit</div>
+      <div class="tab" data-framework="vanilla">Vanilla JS</div>
+    </div>
+
+    <div class="container">
+      <div class="input-section">
+        <h3>Input Data</h3>
+        <div class="example-data" id="example-data">
+          { "siteSettings": { "siteName": "My Awesome Site", "siteDescription":
+          "A modern website with great SEO" }, "page": { "id": "1", "title":
+          "About Us", "slug": "about", "status": "published", "excerpt": "Learn
+          more about our company and mission", "seo": { "title": "About Our
+          Company | My Awesome Site", "description": "Learn more about our
+          company, mission, and values", "keywords": "about, company, mission,
+          values" }, "createdAt": "2024-01-01T00:00:00.000Z", "updatedAt":
+          "2024-01-01T00:00:00.000Z" }, "baseUrl": "https://myawesomesite.com",
+          "type": "page" }
+        </div>
+        <textarea
+          id="input-data"
+          placeholder="Enter your SEO data here..."
+        ></textarea>
+        <button onclick="generateSEO()">Generate SEO</button>
+      </div>
+
+      <div class="output-section">
+        <h3>Generated Output</h3>
+        <div class="output" id="output"></div>
+      </div>
+    </div>
+
+    <div class="tab-content active" id="react-content">
+      <h3>React Usage</h3>
+      <div class="example-data">
+        import { useSEO } from '@alloylab/seo'; function MyPage({ page }) {
+        const { title, description, metaTags } = useSEO({ siteSettings: {
+        siteName: 'My Site' }, page, baseUrl: 'https://mysite.com', type: 'page'
+        }); return ( &lt;div&gt; &lt;head&gt;{metaTags}&lt;/head&gt;
+        &lt;h1&gt;{title}&lt;/h1&gt; &lt;/div&gt; ); }
+      </div>
+    </div>
+
+    <div class="tab-content" id="nextjs-content">
+      <h3>Next.js App Router Usage</h3>
+      <div class="example-data">
+        import { generateMetadata } from '@alloylab/seo/nextjs'; export async
+        function generateMetadata({ params }) { const page = await
+        getPage(params.slug); return generateMetadata({ siteSettings: {
+        siteName: 'My Site' }, page, baseUrl: 'https://mysite.com', type: 'page'
+        }); }
+      </div>
+    </div>
+
+    <div class="tab-content" id="sveltekit-content">
+      <h3>SvelteKit Usage</h3>
+      <div class="example-data">
+        // +page.ts import { generateSEOData } from '@alloylab/seo/sveltekit';
+        export const load = async () => { const seo = generateSEOData({
+        siteSettings: { siteName: 'My Site' }, baseUrl: 'https://mysite.com',
+        type: 'home' }); return { seo }; };
+      </div>
+    </div>
+
+    <div class="tab-content" id="vanilla-content">
+      <h3>Vanilla JavaScript Usage</h3>
+      <div class="example-data">
+        import { generateSEO, generateMetaTags } from '@alloylab/seo'; const seo
+        = generateSEO(data, siteSettings, 'page', baseUrl); const metaTags =
+        generateMetaTags(seo); // Insert into document head
+        document.head.insertAdjacentHTML('beforeend', metaTags);
+      </div>
+    </div>
+
+    <script>
+      // Tab switching
+      document.querySelectorAll('.tab').forEach((tab) => {
+        tab.addEventListener('click', () => {
+          document
+            .querySelectorAll('.tab')
+            .forEach((t) => t.classList.remove('active'));
+          document
+            .querySelectorAll('.tab-content')
+            .forEach((c) => c.classList.remove('active'));
+
+          tab.classList.add('active');
+          document
+            .getElementById(tab.dataset.framework + '-content')
+            .classList.add('active');
+        });
+      });
+
+      // Initialize with example data
+      document.getElementById('input-data').value = document
+        .getElementById('example-data')
+        .textContent.trim();
+
+      function generateSEO() {
+        try {
+          const inputData = JSON.parse(
+            document.getElementById('input-data').value
+          );
+
+          // Simulate SEO generation (in real implementation, this would use the actual package)
+          const seo = {
+            title:
+              inputData.page?.seo?.title ||
+              `${inputData.page?.title} | ${inputData.siteSettings?.siteName}`,
+            description:
+              inputData.page?.seo?.description ||
+              inputData.page?.excerpt ||
+              inputData.siteSettings?.siteDescription,
+            keywords: inputData.page?.seo?.keywords,
+            url:
+              inputData.type === 'page'
+                ? `${inputData.baseUrl}/${inputData.page?.slug}`
+                : inputData.baseUrl,
+            type: inputData.type === 'home' ? 'website' : 'article',
+          };
+
+          const metaTags = `&lt;title&gt;${seo.title}&lt;/title&gt;
+&lt;meta name="description" content="${seo.description}" /&gt;
+&lt;meta property="og:title" content="${seo.title}" /&gt;
+&lt;meta property="og:description" content="${seo.description}" /&gt;
+&lt;meta property="og:type" content="${seo.type}" /&gt;
+&lt;meta property="og:url" content="${seo.url}" /&gt;`;
+
+          const structuredData = {
+            '@context': 'https://schema.org',
+            '@type': inputData.type === 'home' ? 'WebSite' : 'Article',
+            name: seo.title,
+            description: seo.description,
+            url: seo.url,
+          };
+
+          const output = `SEO Data:
+${JSON.stringify(seo, null, 2)}
+
+Meta Tags:
+${metaTags}
+
+Structured Data:
+${JSON.stringify(structuredData, null, 2)}`;
+
+          document.getElementById('output').textContent = output;
+        } catch (error) {
+          document.getElementById('output').textContent =
+            `Error: ${error.message}`;
+        }
+      }
+
+      // Generate SEO on page load
+      generateSEO();
+    </script>
+  </body>
+</html>

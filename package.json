@@ -4,6 +4,9 @@
   "description": "SEO utilities and components for modern web applications",
   "main": "dist/index.js",
   "type": "module",
+  "bin": {
+    "seo-cli": "./dist/cli/index.js"
+  },
   "files": [
     "dist",
     "README.md",
@@ -60,6 +63,9 @@
   },
   "peerDependencies": {
     "react": ">=18.0.0"
+  },
+  "dependencies": {
+    "commander": "^12.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",

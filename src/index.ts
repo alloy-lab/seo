@@ -45,6 +45,19 @@ export {
   generateStructuredData,
 } from './utils/structuredData.js';
 
+// Lazy Loading
+export {
+  lazyLoadFAQSchema,
+  lazyLoadFrameworkUtils,
+  lazyLoadLocalBusinessSchema,
+  lazyLoadProductSchema,
+  lazyLoadSEOUtils,
+  lazyLoadSitemapUtils,
+  lazyLoadStructuredData,
+  preloadFrameworkUtils,
+  preloadSEOUtils,
+} from './utils/lazy.js';
+
 // Types
 export type {
   FAQItem,
@@ -54,9 +67,9 @@ export type {
   SEOData,
   SEOFields,
   SEOHeadProps,
-  SiteSettings,
   SitemapConfig,
   SitemapUrl,
+  SiteSettings,
   StructuredDataConfig,
   StructuredDataProps,
 } from './types/index.js';
