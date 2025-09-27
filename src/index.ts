@@ -58,6 +58,21 @@ export {
   preloadSEOUtils,
 } from './utils/lazy.js';
 
+// Payload CMS Integration
+export { seoAdminComponents } from './payload/admin.js';
+export {
+  enhancedSeoFields,
+  seoFields,
+  siteSeoFields,
+} from './payload/fields.js';
+export { seoHooks, siteSeoHooks } from './payload/hooks.js';
+export { addSeoFields, addSeoHooks, seoPlugin } from './payload/plugin.js';
+export type {
+  PayloadSEOConfig,
+  PayloadSEOOptions,
+  PayloadSEOPlugin,
+} from './payload/types.js';
+
 // Types
 export type {
   FAQItem,
