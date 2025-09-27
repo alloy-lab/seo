@@ -357,13 +357,13 @@
           <p>Install the package using your preferred package manager:</p>
 
           <div class="code-block">
-            <span class="comment"># npm</span>
-            npm install @alloylab/seo
-
-            <span class="comment"># yarn</span>
-            yarn add @alloylab/seo
-
-            <span class="comment"># pnpm</span>
+            <span class="comment"># npm</span><br />
+            npm install @alloylab/seo<br />
+            <br />
+            <span class="comment"># yarn</span><br />
+            yarn add @alloylab/seo<br />
+            <br />
+            <span class="comment"># pnpm</span><br />
             pnpm add @alloylab/seo
           </div>
         </section>
@@ -372,7 +372,9 @@
           <h2>🎯 Usage</h2>
 
           <h3>React Hook</h3>
-          <pre class="code-block"><code><span class="keyword">import</span> { useSEO } <span class="keyword">from</span> <span class="string">'@alloylab/seo'</span>;
+          <pre
+            class="code-block"
+          ><code><span class="keyword">import</span> { useSEO } <span class="keyword">from</span> <span class="string">'@alloylab/seo'</span>;
 
 <span class="keyword">function</span> MyPage({ page }) {
   <span class="keyword">const</span> { title, description, metaTags } = useSEO({
@@ -392,7 +394,9 @@
 }</code></pre>
 
           <h3>Next.js App Router</h3>
-          <pre class="code-block"><code><span class="keyword">import</span> { generateMetadata } <span class="keyword">from</span> <span class="string">'@alloylab/seo/nextjs'</span>;
+          <pre
+            class="code-block"
+          ><code><span class="keyword">import</span> { generateMetadata } <span class="keyword">from</span> <span class="string">'@alloylab/seo/nextjs'</span>;
 
 <span class="keyword">export async function</span> generateMetadata({ params }) {
   <span class="keyword">const</span> page = <span class="keyword">await</span> getPage(params.slug);
@@ -485,7 +489,9 @@
             integration.
           </p>
 
-          <pre class="code-block"><code><span class="keyword">import</span> { seoPlugin } <span class="keyword">from</span> <span class="string">'@alloylab/seo/payload'</span>;
+          <pre
+            class="code-block"
+          ><code><span class="keyword">import</span> { seoPlugin } <span class="keyword">from</span> <span class="string">'@alloylab/seo/payload'</span>;
 
 <span class="keyword">export default</span> buildConfig({
   plugins: [
@@ -501,9 +507,7 @@
           <h2>Ready to Get Started?</h2>
           <p>Start building better SEO into your applications today.</p>
           <a href="playground.html" class="btn">Try the Playground</a>
-          <a
-            href="https://github.com/alloy-lab/seo"
-            class="btn btn-secondary"
+          <a href="https://github.com/alloy-lab/seo" class="btn btn-secondary"
             >View on GitHub</a
           >
         </div>
