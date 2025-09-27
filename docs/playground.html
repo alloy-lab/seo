@@ -303,7 +303,9 @@
 
       <div class="tab-content active" id="react-content">
         <h3>React Usage</h3>
-        <pre class="code-example"><code><span class="keyword">import</span> { useSEO } <span class="keyword">from</span> <span class="string">'@alloylab/seo'</span>;
+        <pre
+          class="code-example"
+        ><code><span class="keyword">import</span> { useSEO } <span class="keyword">from</span> <span class="string">'@alloylab/seo'</span>;
 
 <span class="keyword">function</span> MyPage({ page }) {
   <span class="keyword">const</span> { title, description, metaTags } = useSEO({
@@ -325,7 +327,9 @@
 
       <div class="tab-content" id="nextjs-content">
         <h3>Next.js App Router Usage</h3>
-        <pre class="code-example"><code><span class="keyword">import</span> { generateMetadata } <span class="keyword">from</span> <span class="string">'@alloylab/seo/nextjs'</span>;
+        <pre
+          class="code-example"
+        ><code><span class="keyword">import</span> { generateMetadata } <span class="keyword">from</span> <span class="string">'@alloylab/seo/nextjs'</span>;
 
 <span class="keyword">export async function</span> generateMetadata({ params }) {
   <span class="keyword">const</span> page = <span class="keyword">await</span> getPage(params.slug);
@@ -357,7 +361,9 @@
 
       <div class="tab-content" id="vanilla-content">
         <h3>Vanilla JavaScript Usage</h3>
-        <pre class="code-example"><code><span class="keyword">import</span> { generateSEO, generateMetaTags } <span class="keyword">from</span> <span class="string">'@alloylab/seo'</span>;
+        <pre
+          class="code-example"
+        ><code><span class="keyword">import</span> { generateSEO, generateMetaTags } <span class="keyword">from</span> <span class="string">'@alloylab/seo'</span>;
 
 <span class="keyword">const</span> seo = generateSEO(data, siteSettings, <span class="string">'page'</span>, baseUrl);
 <span class="keyword">const</span> metaTags = generateMetaTags(seo);
