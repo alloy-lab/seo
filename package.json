@@ -32,7 +32,7 @@
     "clean": "rm -rf dist",
     "prebuild": "npm run clean",
     "prepublishOnly": "npm run test:run && npm run lint && npm run typecheck && npm run typecheck:test",
-    "prepare": "npm run build",
+    "prepare": "lefthook install && npm run build",
     "publish": "npm publish --access public",
     "hooks:install": "lefthook install",
     "hooks:uninstall": "lefthook uninstall",
