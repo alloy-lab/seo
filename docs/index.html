@@ -372,8 +372,7 @@
           <h2>🎯 Usage</h2>
 
           <h3>React Hook</h3>
-          <div class="code-block">
-<span class="keyword">import</span> { useSEO } <span class="keyword">from</span> <span class="string">'@alloylab/seo'</span>;
+          <pre class="code-block"><code><span class="keyword">import</span> { useSEO } <span class="keyword">from</span> <span class="string">'@alloylab/seo'</span>;
 
 <span class="keyword">function</span> MyPage({ page }) {
   <span class="keyword">const</span> { title, description, metaTags } = useSEO({
@@ -390,12 +389,10 @@
       &lt;p&gt;{description}&lt;/p&gt;
     &lt;/div&gt;
   );
-}
-          </div>
+}</code></pre>
 
           <h3>Next.js App Router</h3>
-          <div class="code-block">
-<span class="keyword">import</span> { generateMetadata } <span class="keyword">from</span> <span class="string">'@alloylab/seo/nextjs'</span>;
+          <pre class="code-block"><code><span class="keyword">import</span> { generateMetadata } <span class="keyword">from</span> <span class="string">'@alloylab/seo/nextjs'</span>;
 
 <span class="keyword">export async function</span> generateMetadata({ params }) {
   <span class="keyword">const</span> page = <span class="keyword">await</span> getPage(params.slug);
@@ -406,12 +403,10 @@
     baseUrl: <span class="string">'https://mysite.com'</span>,
     type: <span class="string">'page'</span>
   });
-}
-          </div>
+}</code></pre>
 
           <h3>SvelteKit</h3>
-          <div class="code-block">
-<span class="comment">// +page.ts</span>
+          <pre class="code-block"><code><span class="comment">// +page.ts</span>
 <span class="keyword">import</span> { generateSEOData } <span class="keyword">from</span> <span class="string">'@alloylab/seo/sveltekit'</span>;
 
 <span class="keyword">export const</span> load = <span class="keyword">async</span> () =&gt; {
@@ -422,8 +417,7 @@
   });
 
   <span class="keyword">return</span> { seo };
-};
-          </div>
+};</code></pre>
         </section>
 
         <section id="playground" class="section">
@@ -491,17 +485,16 @@
             integration.
           </p>
 
-          <div class="code-block">
-            <span class="keyword">import</span> { seoPlugin }
-            <span class="keyword">from</span>
-            <span class="string">'@alloylab/seo/payload'</span>;
+          <pre class="code-block"><code><span class="keyword">import</span> { seoPlugin } <span class="keyword">from</span> <span class="string">'@alloylab/seo/payload'</span>;
 
-            <span class="keyword">export default</span> buildConfig({ plugins: [
-            seoPlugin({ collections: [<span class="string">'pages'</span>,
-            <span class="string">'posts'</span>], globals: [<span class="string"
-              >'site'</span
-            >] }) ] });
-          </div>
+<span class="keyword">export default</span> buildConfig({
+  plugins: [
+    seoPlugin({
+      collections: [<span class="string">'pages'</span>, <span class="string">'posts'</span>],
+      globals: [<span class="string">'site'</span>]
+    })
+  ]
+});</code></pre>
         </section>
 
         <div class="cta-section">

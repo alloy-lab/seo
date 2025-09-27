@@ -303,8 +303,7 @@
 
       <div class="tab-content active" id="react-content">
         <h3>React Usage</h3>
-        <div class="code-example">
-<span class="keyword">import</span> { useSEO } <span class="keyword">from</span> <span class="string">'@alloylab/seo'</span>;
+        <pre class="code-example"><code><span class="keyword">import</span> { useSEO } <span class="keyword">from</span> <span class="string">'@alloylab/seo'</span>;
 
 <span class="keyword">function</span> MyPage({ page }) {
   <span class="keyword">const</span> { title, description, metaTags } = useSEO({
@@ -321,14 +320,12 @@
       &lt;p&gt;{description}&lt;/p&gt;
     &lt;/div&gt;
   );
-}
-        </div>
+}</code></pre>
       </div>
 
       <div class="tab-content" id="nextjs-content">
         <h3>Next.js App Router Usage</h3>
-        <div class="code-example">
-<span class="keyword">import</span> { generateMetadata } <span class="keyword">from</span> <span class="string">'@alloylab/seo/nextjs'</span>;
+        <pre class="code-example"><code><span class="keyword">import</span> { generateMetadata } <span class="keyword">from</span> <span class="string">'@alloylab/seo/nextjs'</span>;
 
 <span class="keyword">export async function</span> generateMetadata({ params }) {
   <span class="keyword">const</span> page = <span class="keyword">await</span> getPage(params.slug);
@@ -339,14 +336,12 @@
     baseUrl: <span class="string">'https://mysite.com'</span>,
     type: <span class="string">'page'</span>
   });
-}
-        </div>
+}</code></pre>
       </div>
 
       <div class="tab-content" id="sveltekit-content">
         <h3>SvelteKit Usage</h3>
-        <div class="code-example">
-<span class="comment">// +page.ts</span>
+        <pre class="code-example"><code><span class="comment">// +page.ts</span>
 <span class="keyword">import</span> { generateSEOData } <span class="keyword">from</span> <span class="string">'@alloylab/seo/sveltekit'</span>;
 
 <span class="keyword">export const</span> load = <span class="keyword">async</span> () =&gt; {
@@ -357,21 +352,18 @@
   });
 
   <span class="keyword">return</span> { seo };
-};
-        </div>
+};</code></pre>
       </div>
 
       <div class="tab-content" id="vanilla-content">
         <h3>Vanilla JavaScript Usage</h3>
-        <div class="code-example">
-<span class="keyword">import</span> { generateSEO, generateMetaTags } <span class="keyword">from</span> <span class="string">'@alloylab/seo'</span>;
+        <pre class="code-example"><code><span class="keyword">import</span> { generateSEO, generateMetaTags } <span class="keyword">from</span> <span class="string">'@alloylab/seo'</span>;
 
 <span class="keyword">const</span> seo = generateSEO(data, siteSettings, <span class="string">'page'</span>, baseUrl);
 <span class="keyword">const</span> metaTags = generateMetaTags(seo);
 
 <span class="comment">// Insert into document head</span>
-document.head.insertAdjacentHTML(<span class="string">'beforeend'</span>, metaTags);
-        </div>
+document.head.insertAdjacentHTML(<span class="string">'beforeend'</span>, metaTags);</code></pre>
       </div>
     </div>
 
