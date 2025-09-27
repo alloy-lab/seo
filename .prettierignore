@@ -1,0 +1,11 @@
+# Ignore HTML files to prevent breaking code examples
+*.html
+
+# Ignore generated files
+dist/
+node_modules/
+
+# Ignore lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
