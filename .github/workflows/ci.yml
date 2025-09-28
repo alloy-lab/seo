@@ -53,17 +53,11 @@ jobs:
       - name: Run typecheck
         run: pnpm typecheck
 
-      - name: Run typecheck tests
-        run: pnpm typecheck:test
-
       - name: Run linting
         run: pnpm lint
 
       - name: Check formatting
         run: pnpm format:check
-
-      - name: Run tests
-        run: pnpm test:run
 
       - name: Run tests with coverage
         run: pnpm test:coverage
