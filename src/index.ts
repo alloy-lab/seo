@@ -30,6 +30,10 @@ export {
   generateSEOData,
   generateMetaTags as generateSvelteKitMetaTags,
 } from './frameworks/sveltekit.js';
+export {
+  generateReactRouterMeta,
+  createMetaFunction,
+} from './frameworks/react-router.js';
 
 // Utilities
 export { generateMetaTags, generateSEO } from './utils/seo.js';

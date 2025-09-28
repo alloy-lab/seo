@@ -24,6 +24,7 @@ export default {
       'always',
       [
         'core', // Core SEO functionality
+        'frameworks', // Framework-specific functionality
         'react', // React components and hooks
         'nextjs', // Next.js integration
         'sveltekit', // SvelteKit integration
