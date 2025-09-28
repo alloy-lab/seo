@@ -111,7 +111,6 @@ When updating documentation:
 
 ## 🔗 Links
 
-- **Live Documentation**: https://alloylab.github.io/overland/packages/seo/
-- **Playground**: https://alloylab.github.io/overland/packages/seo/playground.html
-- **API Reference**: https://alloylab.github.io/overland/packages/seo/api.html
+- **Live Documentation**: https://seo.alloylab.net
+- **Playground**: https://seo.alloylab.net/playground.html
 - **GitHub Repository**: https://github.com/alloy-lab/seo
