@@ -11,8 +11,8 @@ type MetaDescriptor = {
   content?: string | undefined;
   [key: string]: string | undefined;
 };
-import { generateSEO, generateMetaTags } from '../utils/seo.js';
 import type { Page, SiteSettings } from '../types/index.js';
+import { generateMetaTags, generateSEO } from '../utils/seo.js';
 
 /**
  * Generate React Router meta descriptors from page and site settings

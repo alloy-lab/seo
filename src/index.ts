@@ -24,16 +24,16 @@ export {
   withSEO,
 } from './frameworks/nextjs.js';
 export {
+  createMetaFunction,
+  generateReactRouterMeta,
+} from './frameworks/react-router.js';
+export {
   createPageSEOLoader,
   createSEOLoader,
   createSEOStore,
   generateSEOData,
   generateMetaTags as generateSvelteKitMetaTags,
 } from './frameworks/sveltekit.js';
-export {
-  generateReactRouterMeta,
-  createMetaFunction,
-} from './frameworks/react-router.js';
 
 // Utilities
 export { generateMetaTags, generateSEO } from './utils/seo.js';
